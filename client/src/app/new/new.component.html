@@ -1,0 +1,104 @@
+<form [formGroup]='contactForm' (ngSubmit)="contactForm.valid && newContact()" autocomplete="off">
+    <div class="form-group">
+        <input type="text"
+        [ngClass]="{'is-invalid': contactForm.get('firstName').errors
+            && contactForm.get('firstName').touched}"
+        class="form-control"
+        formControlName="firstName"
+        placeholder="First Name">
+
+        <div class="invalid-feedback" 
+        *ngIf="contactForm.get('firstName').touched 
+            && contactForm.get('firstName').hasError('required')">
+        Enter first Name</div>
+    </div>
+
+    <div class="form-group">
+        <input type="text"
+        [ngClass]="{'is-invalid': contactForm.get('lastName').errors
+            && contactForm.get('lastName').touched}"
+        class="form-control"
+        formControlName="lastName"
+        placeholder="Last Name">
+
+        <div class="invalid-feedback" 
+        *ngIf="contactForm.get('lastName').touched 
+            && contactForm.get('lastName').hasError('required')">
+        Enter last Name</div>
+    </div>
+
+    <div class="form-group">
+        <input type="text"
+        [ngClass]="{'is-invalid': contactForm.get('email').errors
+            && contactForm.get('email').touched}"
+        class="form-control"
+        formControlName="email"
+        placeholder="Email">
+
+        <div class="invalid-feedback" 
+        *ngIf="contactForm.get('email').touched 
+            && contactForm.get('email').hasError('required')">
+        Enter email</div>
+    </div>
+
+    <div class="form-group">
+        <input type="text"
+        [ngClass]="{'is-invalid': contactForm.get('phoneNumber').errors
+            && contactForm.get('phoneNumber').touched}"
+        class="form-control"
+        formControlName="phoneNumber"
+        placeholder="Phone number">
+
+        <div class="invalid-feedback" 
+        *ngIf="contactForm.get('phoneNumber').touched 
+            && contactForm.get('phoneNumber').hasError('required')">
+        Enter phone number</div>
+    </div>
+
+    <div class="form-group">
+        <input type="text"
+        [ngClass]="{'is-invalid': contactForm.get('address').errors
+            && contactForm.get('address').touched}"
+        class="form-control"
+        formControlName="address"
+        placeholder="Address">
+
+        <div class="invalid-feedback" 
+        *ngIf="contactForm.get('address').touched 
+            && contactForm.get('address').hasError('required')">
+        Enter address</div>
+    </div>
+
+    <div class="form-group">
+        <input type="text"
+        [ngClass]="{'is-invalid': contactForm.get('city').errors
+            && contactForm.get('city').touched}"
+        class="form-control"
+        formControlName="city"
+        placeholder="City">
+
+        <div class="invalid-feedback" 
+        *ngIf="contactForm.get('city').touched 
+            && contactForm.get('city').hasError('required')">
+        Enter city</div>
+    </div>
+
+    <div class="form-group">
+        <input type="text"
+        [ngClass]="{'is-invalid': contactForm.get('zip').errors
+            && contactForm.get('zip').touched}"
+        class="form-control"
+        formControlName="zip"
+        placeholder="Zip code">
+
+        <div class="invalid-feedback" 
+        *ngIf="contactForm.get('zip').touched 
+            && contactForm.get('zip').hasError('required')">
+        Enter zip code</div>
+    </div>
+
+    <div class="form-group text-center">
+        <button class="btn btn-success mr-4" [disabled]="!contactForm.valid" type="submit">Add contact</button>
+        <button class="btn btn-default btn-anuluj" type="button" (click)="cancel()">Cancel</button>
+      </div>
+</form>

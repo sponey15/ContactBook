@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row" *ngIf="!newMode && !editMode">
+      <table class="table">
+          <tr>
+              <th style="width: 10%;">First name</th>
+              <th style="width: 10%;">Last name</th>
+              <th style="width: 10%;">Email</th>
+              <th style="width: 10%;">Phone number</th>
+              <th style="width: 10%;">Address</th>
+              <th style="width: 10%;">City</th>
+              <th style="width: 10%;">Zip</th>
+          </tr>
+          <tr *ngFor="let contact of contacts">
+              <td>{{contact.firstName}}</td>
+              <td>{{contact.lastName}}</td>
+              <td>{{contact.email}}</td>
+              <td>{{contact.phoneNumber}}</td>
+              <td>{{contact.address}}</td>
+              <td>{{contact.city}}</td>
+              <td>{{contact.zip}}</td>
+              <td><button (click)="editToggle(contact.id)" class="btn btn-info" value="{{contact.id}}">Edit contact</button></td>
+          </tr>
+          <tr>
+              <td><button (click)="newToggle()" class="btn btn-info">Add new contact</button></td>
+          </tr>
+      </table>
+  </div>
+
+
+  <div *ngIf="editMode" class="container">
+      <div class="row justify-content-center">
+        <div class="col-4">
+          <h2 class="text-center text-primary">Edit contact</h2>
+          <app-edit [contactsFromHomeComponent]="contactToEdit" (cancelEdit)="cancelEditMode($event)"></app-edit>
+        </div>
+      </div>
+  </div>
+
+  <div *ngIf="newMode" class="container">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <h2 class="text-center text-primary">Add new contact</h2>
+        <app-new (cancelNew)="cancelNewMode($event)"></app-new>
+      </div>
+    </div>
+  </div>
+</div>
